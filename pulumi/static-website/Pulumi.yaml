@@ -1,0 +1,11 @@
+name: pulumi-static-website
+description: Static website hosted on Google Cloud Storage
+main: src/index.ts
+runtime:
+  name: nodejs
+  options:
+    packagemanager: pnpm
+    # TypeScript 7 has no JavaScript API for Pulumi's built-in ts-node, so tsx
+    # loads the program instead.
+    typescript: false
+    nodeargs: "--import tsx"

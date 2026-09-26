@@ -1,0 +1,36 @@
+packages:
+  - "cdktn/*"
+  - "pulumi/*"
+
+# Shared versions. Examples reference these as `catalog:`; a dependency only one
+# example uses stays pinned in that example's package.json.
+catalog:
+  "@biomejs/biome": ^2.5.14
+  "@pulumi/gcp": ^9.37.0
+  "@pulumi/pulumi": ^3.263.0
+  "@types/node": ^26.6.2
+  cdktn: ^0.24.0
+  cdktn-cli: ^0.24.0
+  # cdktn 0.24 peers on constructs ">=10.6.0 <10.8.0"; 0.25 widens it to ^10.6.0.
+  constructs: ~10.7.2
+  tsx: ^4.23.13
+  typescript: ^7.0.2
+  vitest: ^5.0.1
+
+allowBuilds:
+  esbuild: true
+  # Reached through @pulumi/pulumi. Its postinstall only checks versions for the
+  # optional protobufjs CLI; nothing Pulumi loads at runtime depends on it.
+  protobufjs: false
+
+peerDependencyRules:
+  allowedVersions:
+    # Pulumi peers on TypeScript <7 only for its built-in ts-node loader, which
+    # the Pulumi example disables in favour of tsx.
+    "@pulumi/pulumi>typescript": "7"
+
+minimumReleaseAge: 4320
+minimumReleaseAgeStrict: true
+
+# mise owns the package-manager binary.
+pmOnFail: ignore

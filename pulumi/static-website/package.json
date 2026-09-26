@@ -1,0 +1,30 @@
+{
+  "name": "pulumi-static-website",
+  "private": true,
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "check": "pnpm lint && pnpm typecheck && pnpm test",
+    "deploy": "pulumi up --yes",
+    "destroy": "pulumi destroy --yes",
+    "format": "biome format --write .",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "preview": "pulumi preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@pulumi/gcp": "catalog:",
+    "@pulumi/pulumi": "catalog:"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@types/node": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}
